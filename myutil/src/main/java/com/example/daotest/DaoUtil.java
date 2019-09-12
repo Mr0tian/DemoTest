@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class DaoUtil {
 
+    //sa
     public TestBeanDao getTestBeanDao(){
         return GreenDaoManager.getInstance().getmDaoSession().getTestBeanDao();
     }
