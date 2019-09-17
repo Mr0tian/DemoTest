@@ -32,7 +32,8 @@
         tools:replace="android:appComponentFactory"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         tools:targetApi="p">
-        <activity android:name=".activity.VoiceActivity">
+        <activity android:name=".activity.HandlerActivity"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,7 +41,11 @@
             </intent-filter>
         </activity>
 
-     <!--   <activity android:name=".EditActivity"/>-->
+        <activity android:name=".activity.ButtonActivity"
+
+            />
+
+        <!--   <activity android:name=".EditActivity"/>-->
     <!--    <activity android:name=".activity.ShowActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"/>
 -->

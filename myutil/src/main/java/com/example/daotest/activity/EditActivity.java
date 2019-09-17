@@ -1,5 +1,6 @@
 package com.example.daotest.activity;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -37,6 +38,7 @@ public class EditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user);
         ButterKnife.inject(this);
         userBeanDao = daoUtil.getUserBeanDao();
+
     }
 
     @OnClick({R.id.btn_save, R.id.btn_see})

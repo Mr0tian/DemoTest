@@ -107,5 +107,9 @@ dependencies {
 
     /*权限请求插件*/
 
+    /*gif图加载控件*/
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.18'
+
+
 
 }

@@ -17,4 +17,11 @@
     <item name="android:backgroundDimEnabled">true</item>
     <item name="android:windowBackground">@drawable/round_background</item>
   </style>
+
+
+  <!--星级选择钮的-->
+  <style name="RatingBar" parent="Theme.AppCompat">
+    <item name="colorControlNormal">@color/voiceColor</item>
+    <item name="colorControlActivated">@color/playbarColor</item>
+  </style>
 </resources>

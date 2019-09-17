@@ -3,4 +3,31 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/lijiang"/>
+
+    <!--定义一个拖动条,并且改变他的外观-->
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="255"
+        android:progress="255"
+        android:thumb="@mipmap/ic_launcher_round"
+        />
+
+    <!--定义一个拖动条,并改变它的刻度图标-->
+    <SeekBar
+        android:id="@+id/seekbar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:tickMark="@drawable/tickmark"
+        android:max="10"/>
+
+
+
 </LinearLayout>
