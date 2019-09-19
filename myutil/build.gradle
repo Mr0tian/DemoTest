@@ -110,6 +110,9 @@ dependencies {
     /*gif图加载控件*/
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.18'
 
+    /*v4包*/
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
 
 
 }
