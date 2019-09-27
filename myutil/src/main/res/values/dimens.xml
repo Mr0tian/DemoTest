@@ -2,4 +2,21 @@
 <resources>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+
+    <dimen name="dialog_background_radius">12dp</dimen>
+    <dimen name="dialog_btn_height">45dp</dimen>
+    <dimen name="dialog_btn_text_size">18sp</dimen>
+    <item format="float" name="dialog_content_space_weight" type="dimen">0.8</item>
+    <dimen name="dialog_horizontal_line_height">1dp</dimen>
+    <dimen name="dialog_horizontal_line_margin_top">16dp</dimen>
+    <item format="float" name="dialog_left_space_weight" type="dimen">0.1</item>
+    <dimen name="dialog_msg_margin_top">10dp</dimen>
+    <dimen name="dialog_msg_text_size">16sp</dimen>
+    <dimen name="dialog_padding_left">16dp</dimen>
+    <dimen name="dialog_padding_right">16dp</dimen>
+    <item format="float" name="dialog_right_space_weight" type="dimen">0.1</item>
+    <dimen name="dialog_title_margin_top">10dp</dimen>
+    <dimen name="dialog_title_text_size">18sp</dimen>
+    <dimen name="dialog_vertical_line_width">0.5dp</dimen>
 </resources>

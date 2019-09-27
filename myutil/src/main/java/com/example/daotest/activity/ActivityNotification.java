@@ -92,8 +92,8 @@ public class ActivityNotification extends AppCompatActivity {
     public void send()
     {
         // 创建一个启动其他Activity的Intent
-        Intent intent = new Intent(this, ButtonActivity.class);
-        PendingIntent pi = PendingIntent.getActivity(this, 0, intent, 0);
+        Intent intent = new Intent();
+        PendingIntent pi = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
         Person p = new Person.Builder()
                 .setName("孙悟空")
                 .setIcon(Icon.createWithResource(this, R.drawable.icon_pause))
@@ -117,7 +117,7 @@ public class ActivityNotification extends AppCompatActivity {
                 // 设置MessagingStyle
                 .setStyle(messagingStyle)
                 // 设置通知将要启动程序的Intent
-                .setContentIntent(pi)
+                 .setContentIntent(pi)
                 .build();
         // 发送通知
         nm.notify(NOTIFICAION_ID, notify);

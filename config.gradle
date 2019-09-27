@@ -1,0 +1,91 @@
+ext {
+    appConfig = [
+            versionCode  : 1,
+            versionName  : "1.0.1",
+            applicationId: "com.example.daotest",
+    ]
+
+    androidConfig = [
+            compileSdkVersion: 29,
+            minSdkVersion    : 17,
+            targetSdkVersion : 29,
+    ]
+
+    upgradeConfig = [
+            versionCode   : 1,
+            versionName   : "1.0.1",
+    ]
+
+    supportVersion = "29.0.2"
+
+
+
+    //各个依赖的版本号
+    appcompat = "1.0.2"
+    constraintlayout = "1.1.3"
+
+    //数据库
+    greendao = "3.2.2"
+
+    //升级数据库
+    GreenDaoUpgradeHelper = "v2.2.1"
+
+    //数据库调试所需
+    greendaoDebug = "1.0.6"
+
+    //黄油刀
+    butterknife = "6.1.0"
+
+    //视频播放控件
+    QSVideoPlayer = "2.2.8"
+
+    //多图选择控件
+    MultiImageSelector = "1.2"
+
+    //recycle的实现
+    recyclerview = "1.0.0"
+
+    //gson
+    gson = "2.8.5"
+
+    //按钮
+    togglebutton = "1.0.0"
+
+    //事件通信器
+    eventbus = "3.1.1"
+
+    okhttp = "3.11.0"
+    enableTinkerSupport = true
+
+    applyConfig = [
+            /*安卓系统依赖所需*/
+            appcompat              : "androidx.appcompat:appcompat:${appcompat}",
+            constraintlayout       : "androidx.constraintlayout:constraintlayout:${constraintlayout}",
+            legacy                 : "androidx.legacy:legacy-support-v4:1.0.0",
+            junit                  : "junit:junit:4.12",
+            runner                 : "androidx.test:runner:1.2.0",
+            espresso               : "androidx.test.espresso:espresso-core:3.2.0",
+
+
+            greendao               : "org.greenrobot:greendao:${greendao}",
+            GreenDaoUpgradeHelper  : "io.github.yuweiguocn:GreenDaoUpgradeHelper:${GreenDaoUpgradeHelper}",
+            greendaoDebug          : "androidx.constraintlayout:constraintlayout:${greendaoDebug}",
+            butterknife            : "com.jakewharton:butterknife:${butterknife}",
+            QSVideoPlayer          : "com.github.tohodog:QSVideoPlayer:${QSVideoPlayer}",
+            MultiImageSelector     : "com.github.lovetuzitong:MultiImageSelector:${MultiImageSelector}",
+            recyclerview           : "androidx.recyclerview:recyclerview:${recyclerview}",
+            gson                   : "com.google.code.gson:gson:${gson}",
+
+            togglebutton           : "com.zcw:togglebutton-library:${togglebutton}",
+
+
+            beanutils              : "commons-beanutils:commons-beanutils:20030211.134440",
+            jsonLib               : "net.sf.json-lib:json-lib:2.4:jdk15",
+
+            eventbus               : "org.greenrobot:eventbus:${eventbus}",
+
+            /*网络加载器*/
+            okhttp                 : "com.squareup.okhttp3:okhttp:${okhttp}",
+
+    ]
+}

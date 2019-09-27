@@ -40,7 +40,7 @@ public class GreenDaoManager  {
         //GreenDao 升级更新初始化
         //如果你想查看日志信息，请将DEBUG设置为true
         MigrationHelper.DEBUG = true;
-        DaoUpdataHelper helper = new DaoUpdataHelper(App.getmAppContext(),"test_guide");
+        DaoUpdataHelper helper = new DaoUpdataHelper(SampleApplicationLike.getmAppContext(),"test_guide");
 
         mDaoMaster = new DaoMaster(helper.getWritableDatabase());
         mDaoSession = mDaoMaster.newSession();

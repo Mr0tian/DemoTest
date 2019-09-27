@@ -31,8 +31,9 @@ public class TestGsonData {
         System.out.println(list.size());*/
 
 
-        double[] info =   transformBD09ToGCJ02(120.38763286253787,36.09380465634091);
-
+        //double[] info =   transformBD09ToGCJ02(120.38763286253787,36.09380465634091);
+//120.39923258463541,36.11821750217014
+        double[] info =   transformBD09ToGCJ02(120.39923258463541,36.11821750217014);
      /*   System.out.println(120.384608 + 4.770000000036134E-4);
 
         System.out.println(36.097875 - 2.819999999985612E-4);

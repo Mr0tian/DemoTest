@@ -24,4 +24,25 @@
     <item name="colorControlNormal">@color/voiceColor</item>
     <item name="colorControlActivated">@color/playbarColor</item>
   </style>
+
+  <style name="Base_Dialog_Style" parent="@android:style/Theme.Dialog">
+    <item name="android:windowBackground">@android:color/transparent</item>
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="android:windowIsFloating">false</item>
+    <item name="android:windowFrame">@null</item>
+    <item name="android:backgroundDimEnabled">true</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowIsTranslucent">true</item>
+    <item name="android:backgroundDimAmount">0.5</item>
+  </style>
+  <style name="upgrade_horizontal_line">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">@dimen/dialog_horizontal_line_height</item>
+    <item name="android:background">@color/dialog_horizontal_line_background</item>
+  </style>
+  <style name="upgrade_vertical_line">
+    <item name="android:layout_width">@dimen/dialog_vertical_line_width</item>
+    <item name="android:layout_height">@dimen/dialog_btn_height</item>
+    <item name="android:background">@color/dialog_vertical_line_background</item>
+  </style>
 </resources>

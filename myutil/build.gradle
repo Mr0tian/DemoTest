@@ -2,15 +2,28 @@ apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao' // apply plugin
 apply plugin: 'com.github.dcendents.android-maven'
 
+// 依赖插件脚本
+apply from: 'tinker-support.gradle'
+
 android {
-    compileSdkVersion 28
-    buildToolsVersion "28.0.3"
+
+    //签名文件
+    signingConfigs {
+        release {
+            keyAlias 'key0'
+            keyPassword '123456'
+            storeFile file('key.jks')
+            storePassword '123456'
+        }
+    }
+    compileSdkVersion androidConfig.compileSdkVersion
+    buildToolsVersion supportVersion
     defaultConfig {
-       /* applicationId "com.example.daotest"*/
-        minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        applicationId appConfig.applicationId
+        minSdkVersion androidConfig.minSdkVersion
+        targetSdkVersion androidConfig.targetSdkVersion
+        versionCode upgradeConfig.versionCode
+        versionName upgradeConfig.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         /*使用.9图*/
@@ -29,83 +42,133 @@ android {
             }
         }
 
+        //recommend
+        dexOptions {
+            jumboMode = true
+        }
+
+
         ndk {
             // 设置支持的SO库架构
-            abiFilters 'armeabi' ,'x86', 'armeabi-v7a', 'x86_64','arm64-v8a'
+            abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
         }
 
     }
     splits {
         abi {
-            enable true
+            //true 可以链接模拟器,false不能,热更新的时候要false
+            enable false
             reset()
-            include 'x86', 'armeabi-v7a','x86_64'
+            include 'x86', 'armeabi-v7a', 'x86_64'
             universalApk true
         }
     }
 
     buildTypes {
+        /*添加打包签名文件*/
         release {
+            signingConfig signingConfigs.release
+            //是否开启混淆 若开启混淆,热更新会不好用,不知道是啥原因
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", "IS_DEBUG", "false"
+        }
+
+        debug {
+            debuggable true
+            signingConfig signingConfigs.release
+            //开启混淆
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", "IS_DEBUG", "true"
         }
         /*数据库调试*/
         /*debug{
             resValue("string", "PORT_NUMBER", "8081")
         }*/
+
     }
-    /*需要生成greendao的时候再开启*/
-   /* greendao{
-        schemaVersion 1
-        daoPackage 'com.example.daotest.dao'
-        targetGenDir 'src/main/java'
+
+    //配置so文件
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    /*这个是忽略错误与安全,强制打包,正常不应该这么搞*/
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+
+    /*打包出apk文件名称*/
+    /*android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = '测试热更新' + '-' + buildType.name + '-v' + defaultConfig.versionName + '.' + defaultConfig.versionCode + '.apk'
+        }
     }*/
+
+
+    /*需要生成greendao的时候再开启*/
+    /* greendao{
+         schemaVersion 1
+         daoPackage 'com.example.daotest.dao'
+         targetGenDir 'src/main/java'
+     }*/
+
+
 }
 
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
+    implementation applyConfig.appcompat
+    implementation applyConfig.constraintlayout
+    implementation applyConfig.legacy
+    testImplementation applyConfig.junit
+    androidTestImplementation applyConfig.runner
+    androidTestImplementation applyConfig.espresso
 
     /*数据库依赖*/
-    implementation 'org.greenrobot:greendao:3.2.2' // add library
+    implementation applyConfig.greendao
     /*数据库升级所需*/
-    implementation 'io.github.yuweiguocn:GreenDaoUpgradeHelper:v2.2.1'
+    implementation applyConfig.GreenDaoUpgradeHelper
 
     /*数据库调试所需*/
-    debugImplementation'com.amitshekhar.android:debug-db:1.0.6'
+    debugImplementation applyConfig.greendaoDebug
 
-    implementation 'com.jakewharton:butterknife:6.1.0'
+    implementation applyConfig.butterknife
 
     /*视频播放插件*/
-    implementation 'com.github.tohodog:QSVideoPlayer:2.2.8'
+    implementation applyConfig.QSVideoPlayer
 
     /*多图选择控件*/
-    implementation 'com.github.lovetuzitong:MultiImageSelector:1.2'
+    implementation applyConfig.MultiImageSelector
 
     /*recycle的实现*/
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation applyConfig.recyclerview
 
     /*gson*/
-    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation applyConfig.gson
 
-    implementation 'com.zcw:togglebutton-library:1.0.0'
+    implementation applyConfig.togglebutton
 
     /******/
-    implementation 'commons-beanutils:commons-beanutils:20030211.134440'
-    implementation 'net.sf.json-lib:json-lib:2.4:jdk15'
+    implementation applyConfig.beanutils
+    implementation applyConfig.jsonLib
     /*****/
 
     /*eventbus*/
-    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation applyConfig.eventbus
 
-    /*权限请求插件*/
+    /*okhttp依赖*/
+    implementation applyConfig.okhttp
+
+    /*下边的,懒得写了,就用原来的行了*/
 
     /*gif图加载控件*/
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.18'
@@ -113,6 +176,19 @@ dependencies {
     /*v4包*/
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
+  /*  //升级的第三方依赖,主要用他的bas包
+    implementation 'ckrjfrog.Upgrade:AppUpgrade:1.0.7'
+    */
+
+
+    /********************** bugly更新与热更新 start***************************/
+    implementation "com.android.support:multidex:1.0.1" // 多dex配置
+
+    implementation 'com.tencent.bugly:crashreport_upgrade:latest.release'
+    // 指定tinker依赖版本（注：应用升级1.3.5版本起，不再内置tinker）
+    implementation 'com.tencent.tinker:tinker-android-lib:1.9.14'
+    implementation 'com.tencent.bugly:nativecrashreport:latest.release'
+    /********************** bugly更新与热更新 end  **************************/
 
 
 }

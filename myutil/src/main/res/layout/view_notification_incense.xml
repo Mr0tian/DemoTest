@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#4f0c10">
+
+    <ImageView
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/jc_enlarge"
+        android:id="@+id/iv_budd"
+        android:layout_marginLeft="13dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_incense_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_toRightOf="@id/iv_budd"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_incense_status"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="13dp"
+        android:id="@+id/tv_incense_time"
+        android:layout_toRightOf="@id/iv_budd"
+        />
+
+</RelativeLayout>
