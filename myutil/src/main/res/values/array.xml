@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--定义一个drawable数组-->
+    <array name="plain_arr">
+
+        <item>@color/blackColor</item>
+        <item>@color/dialog_horizontal_line_background</item>
+    </array>
+
+
+    <!--定义字符串数组-->
+    <string-array name="stirng_array">
+        <item>@string/app_name</item>
+        <item>@string/hello_world</item>
+
+    </string-array>
+
+    <!--定义字符串数组-->
+    <string-array name="books">
+        <item>疯狂啊</item>
+    </string-array>
+
+</resources>

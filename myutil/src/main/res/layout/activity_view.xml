@@ -66,9 +66,7 @@
         android:splitTrack="true"
         android:switchPadding="10dp"
         android:thumbTextPadding="15dp"
-        android:trackTint="@color/colorPrimaryDark"
-        />
-
+        android:trackTint="@color/colorPrimaryDark" />
 
 
 </LinearLayout>

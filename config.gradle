@@ -69,7 +69,7 @@ ext {
 
             greendao               : "org.greenrobot:greendao:${greendao}",
             GreenDaoUpgradeHelper  : "io.github.yuweiguocn:GreenDaoUpgradeHelper:${GreenDaoUpgradeHelper}",
-            greendaoDebug          : "androidx.constraintlayout:constraintlayout:${greendaoDebug}",
+            greendaoDebug          : "com.amitshekhar.android:debug-db:${greendaoDebug}",
             butterknife            : "com.jakewharton:butterknife:${butterknife}",
             QSVideoPlayer          : "com.github.tohodog:QSVideoPlayer:${QSVideoPlayer}",
             MultiImageSelector     : "com.github.lovetuzitong:MultiImageSelector:${MultiImageSelector}",

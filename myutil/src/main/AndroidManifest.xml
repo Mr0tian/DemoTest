@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
 
     <!--使用音频的权限-->
@@ -35,9 +36,11 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         tools:targetApi="p"
         >
-        <activity android:name=".activity.HotLoadTestActivity">
+        <activity android:name=".activity.BitmapTestActivity"
+                  android:configChanges="orientation|keyboardHidden|screenSize">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"
+                    />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
