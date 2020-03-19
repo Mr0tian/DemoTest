@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <declare-styleable name="WaveLoadView">
+        <attr name="wave_load_mode" format="enum">
+            <enum name="icon" value="1" />
+            <enum name="color" value="2" />
+        </attr>
+        <attr name="wave_load_auto_load" format="boolean" />
+        <attr name="wave_load_icon" format="reference"/>
+        <attr name="wave_load_color" format="reference|color"/>
+        <attr name="wave_load_show_text" format="boolean"/>
+        <attr name="wave_load_text_size" format="dimension"/>
+        <attr name="wave_load_duration" format="integer"/>
+        <attr name="wave_load_stroke_width" format="dimension"/>
+    </declare-styleable>
+
     <declare-styleable name="voiceView">
         <!--中间线的颜色，就是波形的时候，大家可以看到，中间有一条直线，就是那个-->
         <attr name="middleLine" format="color" />
@@ -46,4 +61,21 @@
     <declare-styleable name="AlphaImageView">
         <attr name="duration"/>
     </declare-styleable>
+
+
+    <!--ProgressImageView-->
+    <declare-styleable name="ProgressImageView">
+        <!--图片圆角大小-->
+        <attr name="roundPixel" format="dimension|reference"></attr>
+        <!--是否启用进度-->
+        <attr name="useProgress" format="boolean"></attr>
+        <!--进度影印色值-->
+        <attr name="roundShadowColor" format="color|reference"></attr>
+        <!--进度文字大小-->
+        <attr name="roundProgressTextSize" format="dimension|reference"></attr>
+        <!--进度文字大小-->
+        <attr name="roundProgressTextColor" format="color|reference"></attr>
+    </declare-styleable>
+
+
 </resources>

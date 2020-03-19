@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.StrictMode;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.multidex.MultiDex;
@@ -13,13 +14,22 @@ import androidx.multidex.MultiDex;
 import com.tencent.bugly.Bugly;
 import com.tencent.bugly.beta.Beta;
 import com.tencent.bugly.beta.interfaces.BetaPatchListener;
+import com.tencent.mid.api.MidService;
+import com.tencent.stat.StatConfig;
+import com.tencent.stat.StatService;
 import com.tencent.tinker.entry.DefaultApplicationLike;
+import com.tencent.mid.api.MidCallback;
+
+import com.tencent.mid.api.MidService;
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.commonsdk.UMConfigure;
 
 import java.util.Locale;
 
+
 /**
  * 自定义ApplicationLike类.
- *
+ * <p>
  * 注意：这个类是Application的代理类，以前所有在Application的实现必须要全部拷贝到这里<br/>
  *
  * @author wenjiewu
@@ -94,9 +104,39 @@ public class SampleApplicationLike extends DefaultApplicationLike {
         };
 
 
+        // [可选]设置是否打开debug输出，上线时请关闭，Logcat标签为"MtaSDK"
+        StatConfig.setDebugEnable(true);
+        //只能切换消息策略,慎用
+        StatConfig.setEnableSmartReporting(true);
+        // 基础统计API
+        StatService.registerActivityLifecycleCallbacks(this.getApplication());
 
+        //友盟统计初始化
+        UMConfigure.init(getApplication(), "5df1aa2b4ca357d088000bc7", "MY_TEST", UMConfigure.DEVICE_TYPE_PHONE, null);
+        // 选用AUTO页面采集模式
+        MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
+        /**
+         * 设置组件化的Log开关
+         * 参数: boolean 默认为false，如需查看LOG设置为true
+         */
+        UMConfigure.setLogEnabled(true);
         init();
 
+        MidService.requestMid(getApplication(), new MidCallback() {
+
+            @Override
+            public void
+            onSuccess(Object mid) {
+                Log.d("mid", "success to get mid:" + mid);
+            }
+
+
+            @Override
+            public void onFail(int errCode, String msg) {
+                Log.d("mid", "failed to get mid, errCode:"
+                        + errCode + ",msg:" + msg);
+            }
+        });
 
 
     }
@@ -146,9 +186,11 @@ public class SampleApplicationLike extends DefaultApplicationLike {
         Beta.unInit();
     }
 
-    public static Context getmAppContext(){
+    public static Context getmAppContext() {
 
         return mContext;
 
     }
+
+
 }

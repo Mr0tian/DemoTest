@@ -14,9 +14,17 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
+    <!-- 必选权限< -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!-- 可选权限< -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <!--使用音频的权限-->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
@@ -36,7 +44,9 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         tools:targetApi="p"
         >
-        <activity android:name=".activity.BitmapTestActivity"
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+
+        <activity android:name=".activity.EditActivity"
                   android:configChanges="orientation|keyboardHidden|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"
@@ -46,6 +56,8 @@
         </activity>
 
         <activity android:name=".activity.ResultActivity"/>
+
+        <activity android:name=".activity.ShowActivity"/>
 
         <activity android:name=".activity.ButtonActivity"
 
